@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAF9F5;
+  --foreground: #111111;
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base resets & typography */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Custom understated scrollbar matching the minimal layout */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF9F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #E6E4DD;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #707070;
+}
+
+/* Lightbox layout overrides */
+.lightbox-open {
+  overflow: hidden;
+}
+
+/* Custom pointer overrides for image container hovers */
+@media (hover: hover) and (pointer: fine) {
+  .custom-hover-area {
+    cursor: none;
+  }
+}
+
