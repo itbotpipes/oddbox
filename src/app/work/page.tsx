@@ -29,7 +29,7 @@ export default function WorkIndex() {
             <div>
               <div className="flex justify-between items-baseline mb-12">
                 <h1 className="font-serif text-5xl md:text-6xl text-[#111] tracking-tight">
-                  WORK
+                  GALLERY
                 </h1>
                 <span className="font-sans text-xs tracking-widest text-[#707070]">
                   01 — 10

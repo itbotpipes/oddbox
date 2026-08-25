@@ -10,7 +10,7 @@ export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const menuItems = [
-    { num: "01", label: "Work", path: "/work" },
+    { num: "01", label: "Gallery", path: "/work" },
     { num: "02", label: "About", path: "/about" },
     { num: "03", label: "Services", path: "/services" },
     { num: "04", label: "Journal", path: "/journal" },
@@ -19,9 +19,13 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-40 px-6 py-6 md:px-12 md:py-8 flex justify-between items-center mix-blend-difference text-white">
-        <Link href="/" className="font-serif text-2xl tracking-widest uppercase font-semibold">
-          ODDBOX
+      <header className="fixed top-0 left-0 w-full z-40 px-6 py-3 md:px-12 md:py-4 flex justify-between items-center mix-blend-difference text-white">
+        <Link href="/" className="flex items-center">
+          <img
+            src="/images/Oddbox Studio Logo Transperant.png"
+            alt="Oddbox Studio"
+            className="h-14 md:h-18 w-auto object-contain brightness-0 invert"
+          />
         </Link>
 
         {/* Desktop Navigation */}

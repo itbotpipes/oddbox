@@ -59,13 +59,10 @@ export default function HomeServicesSection() {
               transition={{ duration: 0.45, ease: "easeOut" }}
               className="relative w-full h-full"
             >
-              <Image
-                src={activeImage}
+              <img
+                src={`${activeImage}?v=2`}
                 alt="Service Preview"
-                fill
-                priority
-                sizes="(max-width: 1200px) 50vw, 600px"
-                className="object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </motion.div>
           </AnimatePresence>

@@ -42,13 +42,10 @@ export default function Home() {
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 w-full h-full"
           >
-            <Image
-              src="/images/couple/couple-01.jpg"
+            <img
+              src="/images/couple/couple-01.jpg?v=2"
               alt="Cinematic Portrait"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover brightness-[0.7]"
+              className="absolute inset-0 w-full h-full object-cover brightness-[0.7]"
             />
           </motion.div>
 
@@ -125,7 +122,7 @@ export default function Home() {
                 </h2>
               </div>
               <Link href="/work" className="font-sans text-xs tracking-widest text-[#111] hover:underline uppercase">
-                ALL WORK ↗
+                GALLERY ↗
               </Link>
             </div>
 
@@ -148,12 +145,10 @@ export default function Home() {
                       } relative overflow-hidden bg-neutral-100 custom-hover-area`}
                       data-cursor-text="OPEN"
                     >
-                      <Image
-                        src={item.image}
+                      <img
+                        src={`${item.image}?v=2`}
                         alt={item.label}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 800px"
-                        className="object-cover transition-transform duration-700 hover:scale-[1.02]"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
                       />
                     </div>
 
@@ -188,13 +183,13 @@ export default function Home() {
         {/* ABOUT PREVIEW WITH BUNTY PATEL PHILOSOPHY */}
         <section className="w-full bg-[#FAF9F5] py-20 px-6 md:py-32 md:px-16 border-t border-[#E6E4DD]">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 relative aspect-[3/4] bg-neutral-100 overflow-hidden">
+            <div className="lg:col-span-5 relative aspect-[3/4] bg-transparent overflow-hidden">
               <Image
-                src="/images/portraits/portraits-06.jpg"
+                src="/images/bunty_patel.avif"
                 alt="Bunty Patel"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover"
+                className="object-cover mix-blend-multiply"
               />
             </div>
             

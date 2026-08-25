@@ -52,12 +52,10 @@ export default function ServicesPage() {
 
                   {/* Right imagery showcase (Asymmetrical Layouts) */}
                   <div className="lg:col-span-6 relative aspect-[16/10] bg-neutral-100 overflow-hidden">
-                    <Image
-                      src={service.image}
+                    <img
+                      src={`${service.image}?v=2`}
                       alt={service.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 800px"
-                      className="object-cover transition-transform duration-700 hover:scale-[1.01]"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.01]"
                     />
                   </div>
                 </div>

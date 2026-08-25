@@ -33,14 +33,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start my-16">
             
             {/* Left side: Large Editorial Image */}
-            <div className="lg:col-span-6 relative aspect-[3/4] bg-neutral-100 overflow-hidden">
+            <div className="lg:col-span-6 relative aspect-[3/4] bg-transparent overflow-hidden">
               <Image
-                src="/images/portraits/portraits-06.jpg"
+                src="/images/bunty_patel.avif"
                 alt="Bunty Patel Creative Portraits"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 600px"
-                className="object-cover"
+                className="object-cover mix-blend-multiply"
               />
             </div>
 
