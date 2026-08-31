@@ -4,6 +4,7 @@ import { use, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { motion } from "framer-motion";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CustomCursor from "@/components/CustomCursor";
@@ -50,7 +51,7 @@ export default function CategoryGallery({ params }: PageProps) {
         <div className="max-w-7xl mx-auto">
           
           {/* Header Metadata */}
-          <div className="border-b border-[#E6E4DD]/60 pb-12 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="border-b border-[#E6E4DD]/60 pb-8 mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
               <span className="font-sans text-[10px] tracking-widest text-[#707070] uppercase">
                 Collection
@@ -65,51 +66,54 @@ export default function CategoryGallery({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Manually Paced Asymmetric Photo Essay Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
-            {categoryImages.map((img, index) => {
-              // Dynamically resolve different layouts based on image position to prevent standard cards grid
-              let gridClasses = "md:col-span-6"; // Fallback
-              
-              const pos = index % 8;
-              if (pos === 0) {
-                // Image 01 — Large landscape
-                gridClasses = "md:col-span-12 aspect-[16/10]";
-              } else if (pos === 1) {
-                // Image 02 — Narrow portrait aligned right
-                gridClasses = "md:col-span-5 md:col-start-8 aspect-[3/4]";
-              } else if (pos === 2 || pos === 3) {
-                // Images 03 + 04 — Asymmetric pair
-                gridClasses = pos === 2 ? "md:col-span-7 aspect-[4/3]" : "md:col-span-5 aspect-[3/4] md:mt-24";
-              } else if (pos === 4) {
-                // Image 05 — Full bleed
-                gridClasses = "md:col-span-12 aspect-[16/9]";
-              } else if (pos === 5) {
-                // Image 06 — Smaller centered photograph surrounded by whitespace
-                gridClasses = "md:col-span-6 md:col-start-4 aspect-[4/5] my-12";
-              } else {
-                // Images 07 + 08 — Editorial closing pair
-                gridClasses = "md:col-span-6 aspect-[4/3]";
-              }
-
+          {/* Elegant Horizontal Category Switcher */}
+          <div className="flex gap-6 md:gap-8 overflow-x-auto pb-4 mb-16 border-b border-[#E6E4DD]/30 scrollbar-none [scrollbar-width:_none] [-ms-overflow-style:_none] [&::-webkit-scrollbar]:hidden">
+            {portfolioCategories.map((cat) => {
+              const isActive = cat.id === categorySlug;
               return (
-                <div
+                <Link
+                  key={cat.id}
+                  href={`/work/${cat.id}`}
+                  className={`font-sans text-xs tracking-widest uppercase transition-all pb-2 whitespace-nowrap border-b-2 hover:text-[#111] ${
+                    isActive
+                      ? "text-[#111] border-[#111] font-medium"
+                      : "text-[#707070]/60 border-transparent hover:border-[#E6E4DD]"
+                  }`}
+                >
+                  {cat.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Premium Masonry Grid with natural aspect ratios */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8 w-full [column-fill:_balance]">
+            {categoryImages.map((img, index) => {
+              return (
+                <motion.div
                   key={img.filename}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: Math.min(index * 0.04, 0.4), ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => setLightboxIndex(index)}
-                  className={`${gridClasses} relative overflow-hidden bg-neutral-100 cursor-pointer custom-hover-area group`}
+                  className="break-inside-avoid relative overflow-hidden bg-neutral-100 cursor-pointer custom-hover-area group rounded-sm shadow-sm transition-all duration-300 hover:shadow-md"
                   data-cursor-text="VIEW"
                 >
-                  <Image
+                  <img
                     src={img.url}
                     alt={img.filename}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 800px"
-                    className="object-cover transition-transform duration-700 hover:scale-[1.02]"
+                    className="w-full h-auto object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
-                  <div className="absolute bottom-4 left-4 font-sans text-[10px] tracking-widest text-[#FAF9F5] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none uppercase">
-                    {img.project}
+                  {/* Subtle Elegant Text Overlay on Hover */}
+                  <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 pointer-events-none">
+                    <span className="font-sans text-[9px] tracking-widest text-[#FAF9F5]/70 uppercase mb-1">
+                      {currentCategory.label}
+                    </span>
+                    <h3 className="font-serif text-base text-[#FAF9F5] leading-snug">
+                      {img.project}
+                    </h3>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>

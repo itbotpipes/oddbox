@@ -6,14 +6,10 @@ export default function SiteFooter() {
     <footer className="w-full bg-[#FAF9F5] border-t border-[#E6E4DD] px-6 py-16 md:px-16 md:py-24">
       <div className="max-w-7xl mx-auto flex flex-col justify-between h-full">
         {/* Large Logo Statement */}
-        <div className="mb-16 md:mb-24 flex justify-center w-full">
-          <Link href="/">
-            <img
-              src="/images/Oddbox Studio Logo Transperant.png"
-              alt="Oddbox Studio"
-              className="h-28 md:h-44 w-auto object-contain brightness-0"
-            />
-          </Link>
+        <div className="mb-16 md:mb-24 text-center">
+          <h2 className="font-serif text-[12vw] leading-none tracking-tighter text-[#111111] font-semibold select-none">
+            ODDBOX®
+          </h2>
         </div>
 
         {/* Info Grid */}
@@ -49,7 +45,7 @@ export default function SiteFooter() {
             <p className="text-[10px] tracking-widest text-[#707070] uppercase font-sans mb-4">Sitemap</p>
             <div className="flex flex-col space-y-1">
               <Link href="/work" className="text-sm text-[#111111] hover:underline font-sans font-light">
-                Gallery
+                Selected Work
               </Link>
               <Link href="/about" className="text-sm text-[#111111] hover:underline font-sans font-light">
                 Bunty Patel
