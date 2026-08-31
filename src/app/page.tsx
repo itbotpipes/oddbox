@@ -95,18 +95,38 @@ export default function Home() {
         </section>
 
         {/* 03: INTRO / POSITIONING */}
-        <section className="w-full bg-[#FAF9F5] py-24 px-6 md:py-36 md:px-16 flex flex-col items-center">
-          <div className="max-w-4xl text-center md:text-left">
-            <span className="font-sans text-[10px] tracking-widest text-[#707070] uppercase">
-              01 — Identity
-            </span>
-            <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-[#111] tracking-tight leading-tight mt-8 mb-6">
-              We don't just document moments. We give them a visual language.
-            </h2>
-            <p className="font-sans text-[#707070] text-sm md:text-base leading-relaxed font-light max-w-2xl mt-4">
-              {siteConfig.aboutBrief} Operated under {siteConfig.legalName}, we construct memories into cinema-grade compositions.
-            </p>
-          </div>
+        <section className="w-full bg-[#FAF9F5] py-28 px-6 md:py-40 md:px-16 border-b border-[#E6E4DD]/40">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+          >
+            {/* Left Column: Heading */}
+            <div className="lg:col-span-7">
+              <span className="font-sans text-[10px] tracking-[0.2em] text-[#707070] uppercase block mb-6">
+                01 — Identity
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] text-[#111111] tracking-tight leading-[1.2] font-medium">
+                We don't just document moments. We give them a visual language.
+              </h2>
+            </div>
+            
+            {/* Right Column: Paragraph Context & Call-to-action */}
+            <div className="lg:col-span-5 lg:mt-12 flex flex-col items-start border-l border-[#E6E4DD] pl-6 md:pl-10">
+              <p className="font-sans text-[#2c2c2c] text-sm md:text-base leading-relaxed font-light mb-8">
+                {siteConfig.aboutBrief} Operated under {siteConfig.legalName}, we construct memories into cinema-grade compositions.
+              </p>
+              <Link 
+                href="/about" 
+                className="font-sans text-xs tracking-widest text-[#111111] hover:text-[#707070] uppercase font-medium group flex items-center gap-2 transition-colors"
+              >
+                Read our philosophy 
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+          </motion.div>
         </section>
 
         {/* 04: SELECTED WORK (Signature Section with sticky elements) */}
@@ -126,50 +146,37 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Asymmetrical Editorial Grid */}
-            <div className="flex flex-col space-y-32 md:space-y-48">
-              {selectedWorkItems.map((item, index) => {
-                // Layout pattern toggling between left offset, right offset, and centered layout
-                const isEven = index % 2 === 0;
-                return (
-                  <div
-                    key={item.num}
-                    className={`flex flex-col ${
-                      isEven ? "md:flex-row" : "md:flex-row-reverse"
-                    } items-center justify-between gap-12 md:gap-24`}
-                  >
-                    {/* Visual Container */}
-                    <div
-                      className={`w-full ${
-                        item.aspect === "portrait" ? "md:w-5/12 aspect-[3/4]" : "md:w-7/12 aspect-[16/10]"
-                      } relative overflow-hidden bg-neutral-100 custom-hover-area`}
-                      data-cursor-text="OPEN"
-                    >
-                      <img
-                        src={`${item.image}?v=2`}
-                        alt={item.label}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
-                      />
-                    </div>
-
-                    {/* Meta Container */}
-                    <div className="w-full md:w-4/12 flex flex-col justify-center">
-                      <span className="font-sans text-xs text-[#707070] tracking-wider mb-2">
-                        {item.num} / {item.subtitle}
-                      </span>
-                      <h3 className="font-serif text-4xl text-[#111] tracking-tight mb-4">
-                        {item.label}
-                      </h3>
-                      <Link
-                        href="/work"
-                        className="font-sans text-[10px] text-[#111] tracking-widest uppercase hover:underline mt-2 self-start"
-                      >
-                        EXPLORE PROJECT ↗
-                      </Link>
-                    </div>
+            {/* Clean, Premium Grid of Cards centered horizontally */}
+            <div className="flex flex-wrap justify-center gap-10 md:gap-x-12 md:gap-y-16">
+              {selectedWorkItems.map((item) => (
+                <div 
+                  key={item.num} 
+                  className="w-full md:w-[calc(50%-24px)] lg:w-[calc(33.333%-32px)] flex flex-col group custom-hover-area" 
+                  data-cursor-text="OPEN"
+                >
+                  <div className="relative w-full aspect-square overflow-hidden bg-neutral-100 mb-6">
+                    <img
+                      src={`${item.image}?v=2`}
+                      alt={item.label}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                    />
                   </div>
-                );
-              })}
+                  <div className="flex flex-col">
+                    <span className="font-sans text-[10px] text-[#707070] tracking-widest uppercase mb-1">
+                      {item.num} / {item.subtitle}
+                    </span>
+                    <h3 className="font-serif text-2xl text-[#111111] tracking-tight mb-2">
+                      {item.label}
+                    </h3>
+                    <Link
+                      href="/work"
+                      className="font-sans text-[10px] text-[#111111] tracking-widest uppercase hover:underline self-start font-medium"
+                    >
+                      EXPLORE PROJECT ↗
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
