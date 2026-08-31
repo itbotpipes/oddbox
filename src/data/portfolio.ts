@@ -33,14 +33,14 @@ export const selectedWorkItems = [
     label: "Joy",
     subtitle: "Couples & Intimate Moments",
     image: "/images/couple/couple-04.jpg",
-    aspect: "landscape"
+    aspect: "portrait"
   },
   {
     num: "03",
     label: "Raw",
     subtitle: "Street & Still Life",
     image: "/images/lifestyle/lifestyle-03.jpeg",
-    aspect: "portrait"
+    aspect: "landscape"
   },
   {
     num: "04",
