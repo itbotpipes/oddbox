@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +8,20 @@ import { Menu, X } from "lucide-react";
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const menuItems = [
     { num: "01", label: "Gallery", path: "/work" },
@@ -19,12 +33,20 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-40 px-6 py-3 md:px-12 md:py-4 flex justify-between items-center mix-blend-difference text-white">
+      <header
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-sm shadow-sm py-2.5 px-6 md:px-12 md:py-3.5 text-[#111111]"
+            : "px-6 py-3 md:px-12 md:py-4 mix-blend-difference text-white"
+        } flex justify-between items-center`}
+      >
         <Link href="/" className="flex items-center">
           <img
             src="/images/Oddbox Studio Logo Transperant.png"
             alt="Oddbox Studio"
-            className="h-14 md:h-18 w-auto object-contain brightness-0 invert"
+            className={`w-auto object-contain transition-all duration-300 ${
+              scrolled ? "h-9 md:h-11 brightness-0" : "h-14 md:h-18 brightness-0 invert"
+            }`}
           />
         </Link>
 
@@ -36,11 +58,15 @@ export default function SiteHeader() {
               href={item.path}
               className="group font-sans text-xs tracking-[0.2em] uppercase relative py-1 overflow-hidden"
             >
-              <span className="text-[10px] text-neutral-400 mr-2 font-light">{item.num}</span>
+              <span className={`text-[10px] mr-2 font-light transition-colors ${
+                scrolled ? "text-neutral-500" : "text-neutral-400"
+              }`}>{item.num}</span>
               <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-full block">
                 {item.label}
               </span>
-              <span className="absolute left-0 top-full w-full transition-transform duration-300 group-hover:-translate-y-full block text-neutral-300">
+              <span className={`absolute left-0 top-full w-full transition-transform duration-300 group-hover:-translate-y-full block ${
+                scrolled ? "text-neutral-600" : "text-neutral-300"
+              }`}>
                 {item.label}
               </span>
             </Link>
@@ -50,7 +76,9 @@ export default function SiteHeader() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden focus:outline-none z-50 text-white"
+          className={`md:hidden focus:outline-none z-50 transition-colors ${
+            scrolled ? "text-[#111111]" : "text-white"
+          }`}
           aria-label="Toggle Menu"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
