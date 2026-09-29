@@ -8,8 +8,7 @@ export default function SiteFooter() {
         {/* Large Logo Statement */}
         <div className="mb-16 md:mb-24 text-center">
           <h2 className="font-serif text-[12vw] leading-none tracking-tighter text-[#111111] font-semibold select-none">
-            ODDBOX®
-          </h2>
+            ODDBOX          </h2>
         </div>
 
         {/* Info Grid */}

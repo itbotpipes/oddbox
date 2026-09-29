@@ -3,7 +3,8 @@ export interface ServiceItem {
   num: string;
   title: string;
   description: string;
-  image: string; // Dynamic client asset reference
+  image: string;
+  categorySlug: string;
 }
 
 export const servicesData: ServiceItem[] = [
@@ -12,41 +13,47 @@ export const servicesData: ServiceItem[] = [
     num: "01",
     title: "Commercial Photography",
     description: "Creative photography for brands, campaigns, editorials, and advertising.",
-    image: "/images/corporate/corporate-01.jpeg"
+    image: "/images/corporate/corporate-02.jpeg",
+    categorySlug: "corporate"
   },
   {
     id: "product-photography",
     num: "02",
     title: "Product Photography",
     description: "High quality product imagery for ecommerce, advertising, and brand marketing.",
-    image: "/images/corporate/corporate-03.jpeg"
+    image: "/images/corporate/corporate-03.jpeg",
+    categorySlug: "corporate"
   },
   {
     id: "commercial-films",
     num: "03",
     title: "Commercial Films / TVC Production",
     description: "Concept-driven commercials and brand films built around cinematic storytelling.",
-    image: "/images/lifestyle/lifestyle-03.jpeg"
+    image: "/images/lifestyle/lifestyle-03.jpeg",
+    categorySlug: "lifestyle"
   },
   {
     id: "brand-story-films",
     num: "04",
     title: "Brand Story Films / Podcast",
     description: "Cinematic brand storytelling communicating vision, process, and identity.",
-    image: "/images/lifestyle/lifestyle-04.jpeg"
+    image: "/images/lifestyle/lifestyle-04.jpeg",
+    categorySlug: "lifestyle"
   },
   {
     id: "social-media-content",
     num: "05",
     title: "Social Media Content Creation",
     description: "High-impact photography and video for Instagram, YouTube, and digital campaigns.",
-    image: "/images/lifestyle/lifestyle-01.jpeg"
+    image: "/images/lifestyle/lifestyle-01.jpeg",
+    categorySlug: "lifestyle"
   },
   {
     id: "fashion-textile",
     num: "06",
     title: "Fashion & Textile Photography",
     description: "Outdoor and studio fashion photography for clothing brands, textile manufacturers, and catalogs.",
-    image: "/images/portraits/portraits-05.jpg"
+    image: "/images/portraits/portraits-05.jpg",
+    categorySlug: "portraits"
   }
 ];

@@ -27,7 +27,7 @@ export default function SiteHeader() {
     { num: "01", label: "Gallery", path: "/work" },
     { num: "02", label: "About", path: "/about" },
     { num: "03", label: "Services", path: "/services" },
-    { num: "04", label: "Journal", path: "/journal" },
+   
     { num: "05", label: "Contact", path: "/contact" }
   ];
 
