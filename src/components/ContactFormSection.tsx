@@ -122,6 +122,14 @@ export default function ContactFormSection() {
                   />
                 </div>
                 <div className="relative">
+                  <input
+                    type="tel"
+                    required
+                    placeholder="PHONE NUMBER"
+                    className="w-full bg-transparent border-b border-[#E6E4DD] py-4 text-xs font-sans tracking-widest uppercase text-[#111] placeholder-[#707070] focus:outline-none focus:border-[#111] transition-colors"
+                  />
+                </div>
+                <div className="relative">
                   <textarea
                     rows={4}
                     required
