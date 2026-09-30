@@ -26,13 +26,11 @@ export default function ContactFormSection() {
   return (
     <section id="contact-section" className="w-full bg-[#FAF9F5] py-20 px-6 md:py-32 md:px-16 border-t border-[#E6E4DD]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
-        
+
         {/* Left side details */}
         <div className="lg:col-span-5 flex flex-col justify-between">
           <div>
-            <p className="font-sans text-[10px] tracking-widest text-[#707070] uppercase mb-8">
-              05 — Get In Touch
-            </p>
+
             <h2 className="font-serif text-5xl md:text-6xl tracking-tight text-[#111] mb-12">
               Let's create something together.
             </h2>
@@ -94,11 +92,10 @@ export default function ContactFormSection() {
                       key={item}
                       type="button"
                       onClick={() => setInterest(item)}
-                      className={`px-4 py-2 border text-xs font-sans tracking-wider transition-colors duration-200 ${
-                        interest === item
+                      className={`px-4 py-2 border text-xs font-sans tracking-wider transition-colors duration-200 ${interest === item
                           ? "border-[#111] bg-[#111] text-[#FAF9F5]"
                           : "border-[#E6E4DD] text-[#707070] hover:border-[#111]"
-                      }`}
+                        }`}
                     >
                       {item}
                     </button>
@@ -142,7 +139,7 @@ export default function ContactFormSection() {
                 >
                   SEND ENQUIRY ↗
                 </button>
-                
+
                 <a
                   href={`https://wa.me/${siteConfig.whatsapp}`}
                   target="_blank"
