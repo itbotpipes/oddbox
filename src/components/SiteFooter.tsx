@@ -41,22 +41,25 @@ export default function SiteFooter() {
 
           {/* Column 3: Navigation Scope */}
           <div>
-            <p className="text-[10px] tracking-widest text-[#707070] uppercase font-sans mb-4">Sitemap</p>
+            <p className="text-[10px] tracking-widest text-[#707070] uppercase font-sans mb-4">Quick links</p>
             <div className="flex flex-col space-y-1">
               <Link href="/work" className="text-sm text-[#111111] hover:underline font-sans font-light">
-                Selected Work
+                Gallery
               </Link>
               <Link href="/about" className="text-sm text-[#111111] hover:underline font-sans font-light">
-                Bunty Patel
+                About
               </Link>
               <Link href="/services" className="text-sm text-[#111111] hover:underline font-sans font-light">
-                Disciplines
+                Services
               </Link>
               <Link href="/journal" className="text-sm text-[#111111] hover:underline font-sans font-light">
                 Journal
               </Link>
               <Link href="/privacy" className="text-sm text-[#111111] hover:underline font-sans font-light">
                 Privacy
+              </Link>
+              <Link href="/terms" className="text-sm text-[#111111] hover:underline font-sans font-light">
+                Terms
               </Link>
             </div>
           </div>
@@ -78,7 +81,7 @@ export default function SiteFooter() {
         {/* Lower copyright */}
         <div className="mt-16 md:mt-24 pt-8 border-t border-[#E6E4DD]/60 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[11px] text-[#707070] font-sans">
           <p>© 2026 {siteConfig.name}. All Rights Reserved.</p>
-          <p>Operated by {siteConfig.legalName} under Wireverse Private Limited.</p>
+        
         </div>
       </div>
     </footer>
